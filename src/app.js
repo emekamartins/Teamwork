@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/users');
+const  cloudinaryConfig  = require('./cloudinaryConfig')
 
 
 app.use((req, res, next) => {
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/v1/auth', userRoutes);
+
+
 
 
 module.exports = app;

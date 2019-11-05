@@ -21,10 +21,19 @@ const Validation = {
 
   generateToken(id) {
     const token = jwt.sign({
-      userId: id,
+      teamId: id,
     },
-    'thistokenformyapp', { expiresIn: '1d' });
+    process.env.JWT_SECRET, { expiresIn: '6h' });
     return token;
+  },
+
+  hidePrivateData(user) {
+    const rows = { ...user };
+    delete rows[0].password;
+    if (rows[0].remember_token) {
+      delete rows[0].remember_token;
+    }
+    return rows;
   },
 
 };
