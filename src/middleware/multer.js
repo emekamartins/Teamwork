@@ -1,14 +1,27 @@
-const multer = require('multer')
+const multer = require('multer');
+
+
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, 'uploads/')
+  destination(req, file, cb) {
+    cb(null, 'uploads/');
   },
-  filename: function(req, file, cb) {
-    console.log(file)
-    cb(null, file.originalname)
-  }
-})
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
 
-const upload = multer({ storage }).single('image')
+});
 
-module.exports = upload
+const upload = multer({
+  limits: {
+    fileSize: 1000000,
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(gif|png|jpg)$/)) {
+      return cb(new Error('file type is unknown'));
+    }
+    return cb(undefined, true);
+  },
+  storage,
+}).single('image');
+
+module.exports = upload;

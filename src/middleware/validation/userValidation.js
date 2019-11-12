@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 const Validation = {
 
   hashPassword(password) {
@@ -34,6 +35,14 @@ const Validation = {
       delete rows[0].remember_token;
     }
     return rows;
+  },
+
+  checkForChar(field) {
+    const char = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (char.test(field)) {
+      return true;
+    }
+    return false;
   },
 
 };

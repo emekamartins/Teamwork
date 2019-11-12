@@ -9,6 +9,7 @@ const Admin = {
       const token = req.headers.authorization.split(' ')[1];
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
       const { teamId } = decodedToken;
+      
       const { rows } = await pool.query('SELECT * FROM users WHERE users.team_id = $1 AND remember_token = $2', [teamId, token]);
 
       if (!rows) {
