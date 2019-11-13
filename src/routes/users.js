@@ -20,7 +20,4 @@ router.get('/me', Auth.verifyToken, userController.getUser);
 // router.delete('/articles/:articleid/delete', Auth.verifyToken, articleController.deleteArticle);
 
 
-
-
-
 module.exports = router;

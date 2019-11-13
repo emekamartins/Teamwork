@@ -27,7 +27,7 @@ const Auth = {
       next();
     } catch (error) {
       res.status(401).json({
-        error: 'Invalid Request, Not Authorized'
+        error: 'Invalid Request, Not Authorized',
       });
     }
   },

@@ -38,11 +38,32 @@ const Validation = {
   },
 
   checkForChar(field) {
-    const char = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    const char = /^[a-zA-Z]+$/;
     if (char.test(field)) {
       return true;
     }
     return false;
+  },
+  userDataValidation(roleId, gender, jobRole, department, address) {
+    if (!/^[0-9]+$/.test(roleId)) {
+      return false;
+    }
+    if (!/^[a-zA-Z]+$/.test(gender)) {
+      return false;
+    }
+    if (!/^[a-z\sA-Z]+$/.test(jobRole)) {
+      return false;
+    }
+    if (!/^[a-zA-Z]+$/.test(department)) {
+      return false;
+    }
+    if (address.length > 300) {
+      return false;
+    }
+    if (!/^[0-9a-z\sA-Z]+$/.test(address)) {
+      return false;
+    }
+    return true;
   },
 
 };

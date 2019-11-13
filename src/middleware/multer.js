@@ -16,8 +16,8 @@ const upload = multer({
     fileSize: 1000000,
   },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(gif|png|jpg)$/)) {
-      return cb(new Error('file type is unknown'));
+    if (!file.originalname.match(/\.(gif)$/)) {
+      return cb(new Error('please upload a gif file'));
     }
     return cb(undefined, true);
   },
