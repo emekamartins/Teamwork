@@ -14,8 +14,8 @@ router.get('/', Auth.verifyToken, articleController.viewArticles);
 router.get('/my-articles', Auth.verifyToken, articleController.viewCurrentUserArticles);
 router.patch('/:articleid', Auth.verifyToken, articleController.editArticle);
 router.delete('/:articleid', Auth.verifyToken, articleController.deleteArticle);
-router.post('/:articleid/comments', Auth.verifyToken, commentsController.postArticleComments);
-router.get('/:articleid/comments', Auth.verifyToken, articleController.viewArticleById);
+router.post('/:articleid/comment', Auth.verifyToken, commentsController.postArticleComments);
+router.get('/:articleid/comment', Auth.verifyToken, articleController.viewArticleById);
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const pool = require('../db/database');
 const Sanitize = require('../middleware/validation/sanitizeData');
 const articleModel = require('../models/articleModel');
 
-/* 
+/*
 -----------------------------------------------------------------------
 controllers for specified article routes
 -----------------------------------------------------------------------
@@ -63,9 +63,6 @@ exports.createArticle = async (request, response) => {
     });
   }
 };
-
-
-
 
 
 // controller to edit/update a particular article
@@ -186,7 +183,6 @@ exports.viewArticleById = async (request, response) => {
 };
 
 
-
 /**
  * ----------------------------------------------------------------------------
  * controllers for other possible routes
@@ -201,32 +197,29 @@ exports.viewCurrentUserArticles = async (request, response) => {
     const { rows, rowCount } = await pool.query('SELECT users.first_name as author_firstname, users.last_name as author_lastname, articles.article_id, articles.article_title as title, articles.content as content, articles.article_created_on FROM articles LEFT JOIN users ON articles.article_author = users.team_id WHERE articles.article_author = $1', [request.user.ID]);
 
     if (!rows || rowCount === 0) {
-      return response.status(404).send({ status: "error", error: 'No articles found' });
+      return response.status(404).send({ status: 'error', error: 'No articles found' });
     }
-    let data = {}
-    let multipleData = []
-    if(rows && rowCount === 1){
-      data.id = rows[0].article_id
-      data.title = Sanitize.decode(rows[0].title)
-      data.article = Sanitize.decode(rows[0].content)
-      data.createdOn = rows[0].article_created_on
+    let data = {};
 
-      return response.status(200).send({ 
-        status: "success", 
-        data
-       });
+    if (rows && rowCount === 1) {
+      data.id = rows[0].article_id;
+      data.title = Sanitize.decode(rows[0].title);
+      data.article = Sanitize.decode(rows[0].content);
+      data.createdOn = rows[0].article_created_on;
+
+      return response.status(200).send({
+        status: 'success',
+        data,
+      });
     }
 
-    if(rows && rowCount > 1){
-      data = articleModel(rows)
-      return response.status(200).send({ 
-        status: "success", 
-        data
-       });
-    }
-    
+    data = articleModel(rows);
+    return response.status(200).send({
+      status: 'success',
+      data,
+    });
   } catch (error) {
-    return response.status(500).send({ error });
+    return response.status(500).send({ status: "error", error });
   }
 };
 
@@ -242,10 +235,10 @@ exports.viewArticles = async (request, response) => {
         return response.status(404).send({ error: 'No articles found' });
       }
       const data = articleModel(rows);
-      return response.status(200).send({ 
-        status: "success",
-        data
-     });
+      return response.status(200).send({
+        status: 'success',
+        data,
+      });
     }
 
     // query search for author if provided
@@ -254,16 +247,15 @@ exports.viewArticles = async (request, response) => {
       const { rows, rowCount } = await pool.query('SELECT users.first_name as author_firstname, users.last_name as author_lastname, articles.article_id, articles.article_title as title, articles.content as content, articles.article_created_on FROM articles LEFT JOIN users ON articles.article_author = users.team_id WHERE (users.last_name || users.first_name) LIKE $1', [searchByAuthor]);
       if (!rows || rowCount === 0) {
         return response.status(404).send({
-           status:"Not found", 
-           data: { 
-             message:'No articles found'}
-           });
+          status: 'Not found',
+          data: { message: 'No articles found' },
+        });
       }
       const data = articleModel(rows);
-      return response.status(200).send({ 
-        status: "success",
-        data
-       });
+      return response.status(200).send({
+        status: 'success',
+        data,
+      });
     }
 
     if (request.query.orderBy) {
@@ -271,36 +263,36 @@ exports.viewArticles = async (request, response) => {
       const columnOrder = `${part[0]} ${part[1].toUpperCase()}`;
       const { rows, rowCount } = await pool.query(`SELECT users.first_name as author_firstname, users.last_name as author_lastname, articles.article_id, articles.article_title as title, articles.content as content, articles.article_created_on FROM articles LEFT JOIN users ON articles.article_author = users.team_id ORDER BY ${columnOrder}`);
       if (!rows || rowCount === 0) {
-        return response.status(404).send({ 
-          
-          status:"Not found", 
-          data: 
-          { message:'No articles found' }
+        return response.status(404).send({
+
+          status: 'Not found',
+          data:
+          { message: 'No articles found' },
         });
       }
 
       const data = articleModel(rows);
-      return response.status(200).send({ 
-        status: "success",
-        data
-       });
+      return response.status(200).send({
+        status: 'success',
+        data,
+      });
     }
 
     // query search for all articles
     const { rows, rowCount } = await pool.query('SELECT users.first_name as author_firstname, users.last_name as author_lastname, articles.article_title as title, articles.article_id, articles.content as content, articles.article_created_on FROM articles LEFT JOIN users ON articles.article_author = users.team_id');
     if (!rows || rowCount === 0) {
-      return response.status(404).send({ 
-        status:"Not found", 
-          data: 
-          { message:'No articles found' }
-       });
+      return response.status(404).send({
+        status: 'Not found',
+        data:
+          { message: 'No articles found' },
+      });
     }
     const data = articleModel(rows);
-    return response.status(200).send({ 
-      status: "success",
-      data
+    return response.status(200).send({
+      status: 'success',
+      data,
     });
   } catch (error) {
-    return response.status(500).send({ status: "error", error });
+    return response.status(500).send({ status: 'error', error });
   }
 };

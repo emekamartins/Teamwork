@@ -3,6 +3,7 @@ const Sanitize = require('../middleware/validation/sanitizeData');
 
 
 exports.viewfeeds = async (request, response) => {
+  console.log("testing.... feed")
   try {
     const { rows } = await pool.query('SELECT * FROM posts LEFT JOIN articles ON posts.post_id = articles.article_post_id LEFT JOIN gifs ON posts.post_id = gifs.post_id ORDER BY post_created_on ASC');
     if (!rows) {
@@ -11,18 +12,6 @@ exports.viewfeeds = async (request, response) => {
         error: 'invalid request',
       });
     }
-
-    // const newData =  []
-    // rows.forEach((row) => {
-    //     newData.push({
-    //         id: row.post_id? row.post_id : row.article_post_id,
-    //         createdOn: row.created_on? row.created_on : row.article_created_on,
-    //         title: row.title? row.title : row.article_title,
-    //         "article/url": row.image_url? row.image_url : row.content,
-    //         authorId: row.author? row.author : row.article_author
-
-    //     })
-    // })
 
     const newData = [];
     rows.forEach((row) => {

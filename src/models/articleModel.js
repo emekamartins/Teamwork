@@ -2,13 +2,13 @@ const Sanitize = require('../middleware/validation/sanitizeData');
 
 const articleData = (rows) => {
   const data = [];
-  
+
   rows.forEach((row) => {
     data.push({
-      id : row.article_id,
-      title : Sanitize.decode(row.title),
-      article : Sanitize.decode(row.content),
-      createdOn : row.article_created_on
+      id: row.article_id,
+      title: Sanitize.decode(row.title),
+      article: Sanitize.decode(row.content),
+      createdOn: row.article_created_on,
     });
   });
   return data;

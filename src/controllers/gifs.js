@@ -3,7 +3,7 @@ const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const pool = require('../db/database');
 const Sanitize = require('../middleware/validation/sanitizeData');
-const gifModel = require('../models/gifModel')
+const gifModel = require('../models/gifModel');
 
 /* DO PAGINATION FOR VIEWING GIF */
 
@@ -69,11 +69,11 @@ exports.uploadGif = async (request, response) => {
     if (!gifData.rows || gifData.rowCount === 0) {
       return response.status(500).send({ status: 'error', error: ' invalid request' });
     }
-    return response.send({
+    return response.status(201).send({
       status: 'success',
       data: {
         gifId: gifData.rows[0].gif_id,
-        message: ' GIF message successfully posted',
+        message: 'gif post successfully posted',
         createdOn: gifData.rows[0].created_on,
         title: gifData.rows[0].title,
         imageUrl: gifData.rows[0].image_url,
@@ -87,8 +87,6 @@ exports.uploadGif = async (request, response) => {
     });
   }
 };
-
-
 
 
 /** **************middleware to view gifs by Id and its associated comments ******************* */
@@ -201,10 +199,9 @@ exports.deleteGif = async (request, response) => {
 };
 
 
-
 /*
 ----------------------------------------------------------
-Other possible gif routes controller 
+Other possible gif routes controller
 ----------------------------------------------------------
 */
 
@@ -219,19 +216,19 @@ exports.viewAllGif = async (request, response) => {
       const { rows, rowCount } = await pool.query('SELECT gifs.gif_id as Id, gifs.title as title, gifs.image_url as url, gifs.created_on, users.first_name as author_firstname, users.last_name as author_lastname FROM gifs LEFT JOIN users ON gifs.author = users.team_id WHERE (users.last_name || users.first_name) LIKE $1', [searchByAuthor]);
       if (!rows || rowCount === 0) {
         return response.status(400).send({
-          status: "Not found",
+          status: 'Not found',
           data: {
-           message: 'No gif found'
-            }
-           });
+            message: 'No gif found',
+          },
+        });
       }
-      const data = gifModel(rows)
+      const data = gifModel(rows);
 
-      return response.status(200).send({ 
-        status: "success",
-        data
+      return response.status(200).send({
+        status: 'success',
+        data,
 
-       });
+      });
     }
 
     if (request.query.orderBy) {
@@ -241,36 +238,36 @@ exports.viewAllGif = async (request, response) => {
 
       if (!rows || rowCount === 0) {
         return response.status(400).send({
-          status: "Not found",
-          data: 
-          {message: 'No gif found'}
-           });
+          status: 'Not found',
+          data:
+          { message: 'No gif found' },
+        });
       }
 
-      const data = gifModel(rows)
-      return response.status(200).send({ 
-        status: "success",
-        data
+      const data = gifModel(rows);
+      return response.status(200).send({
+        status: 'success',
+        data,
       });
     }
 
     const { rows, rowCount } = await pool.query(`SELECT gifs.gif_id as Id, gifs.title as title, gifs.image_url as url, gifs.created_on, users.first_name as author_firstname, users.last_name as author_lastname FROM gifs LEFT JOIN users ON gifs.author = users.team_id LIMIT ${limit} OFFSET ${offset}`);
     if (!rows || rowCount === 0) {
-      return response.status(400).send({ 
-        status: "Not found",
+      return response.status(400).send({
+        status: 'Not found',
         data: {
-         message: 'No gif post found'
-          }
-       });
+          message: 'No gif post found',
+        },
+      });
     }
 
-    const data = gifModel(rows)
+    const data = gifModel(rows);
     return response.status(200).json({
-       status: "success",
-       data
-      });
+      status: 'success',
+      data,
+    });
   } catch (error) {
-    return response.status(500).send({ status: "error", error });
+    return response.status(500).send({ status: 'error', error });
   }
 };
 
@@ -287,15 +284,15 @@ exports.viewGif = async (request, response) => {
       const { rows, rowCount } = await pool.query(`SELECT gifs.gif_id as Id, gifs.title as title, gifs.image_url as url, gifs.created_on, users.first_name as author_firstname, users.last_name as author_lastname FROM gifs LEFT JOIN users ON gifs.author = users.team_id WHERE gifs.author = $1 ORDER BY ${columnOrder} LIMIT ${limit} OFFSET ${offset}`, [request.user.ID]);
 
       if (!rows || rowCount === 0) {
-        return response.status(404).send({ 
-          status: "Not found",
-          error: 'No gif found'
-         });
+        return response.status(404).send({
+          status: 'Not found',
+          error: 'No gif found',
+        });
       }
-      const data = gifModel(rows)
-      return response.status(200).send({ 
-        status: "success",
-        data
+      const data = gifModel(rows);
+      return response.status(200).send({
+        status: 'success',
+        data,
       });
     }
 
@@ -303,17 +300,17 @@ exports.viewGif = async (request, response) => {
     const { rows, rowCount } = await pool.query(`SELECT gifs.gif_id as Id, gifs.title as title, gifs.image_url as url, gifs.created_on, users.first_name as author_firstname, users.last_name as author_lastname FROM gifs LEFT JOIN users ON gifs.author = users.team_id WHERE gifs.author = $1 LIMIT ${limit} OFFSET ${offset}`, [request.user.ID]);
     if (!rows || rowCount === 0) {
       return response.status(404).send({
-        status: "Not found",
-         error: 'No gif found'
-         });
+        status: 'Not found',
+        error: 'No gif found',
+      });
     }
 
-    const data = gifModel(rows)
-    return response.status(200).send({ 
-      status: "success",
-      data
+    const data = gifModel(rows);
+    return response.status(200).send({
+      status: 'success',
+      data,
     });
   } catch (error) {
-    return response.status(500).send({ status: "error", error });
+    return response.status(500).send({ status: 'error', error });
   }
 };

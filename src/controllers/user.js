@@ -8,6 +8,7 @@ const userData = require('../models/userModel');
 
 // create User Controller
 exports.addUser = async (request, response) => {
+  
   try {
     const {
       roleId, firstName, lastName, email, password, gender, jobRole, department, address,
@@ -62,7 +63,7 @@ exports.addUser = async (request, response) => {
       data: {
         message: 'user account successfully created',
         token,
-        userId: rows[0].user_id,
+        userId: rows[0].team_id,
       },
     });
   } catch (e) {
@@ -77,20 +78,23 @@ exports.addUser = async (request, response) => {
 
 // login controller
 exports.loginUser = async (request, response) => {
+  
   const { email, password } = request.body;
   const now = new Date();
+
   // validate email/password
   if (!email || !password) {
     return response.status(400).send({ error: 'Some values are missing' });
   }
   try {
     // find user with email and password in database
+    
     const { rows, rowCount } = await pool.query('SELECT * FROM users WHERE users.email = $1', [email]);
-
-    if (!rows || rowCount === 0) { return response.status(500).json({ status: 'error', error: 'email or password is incorrect' }); }
+    
+    if (!rows || rowCount === 0) { return response.status(401).json({ status: 'error', error: 'email or password is incorrect' }); }
 
     if (!Validation.comparePassword(rows[0].password, password)) {
-      return response.status(400).send({ status: 'error', error: ' email or password is incorrect' });
+      return response.status(401).send({ status: 'error', error: ' email or password is incorrect' });
     }
 
     // generate token and store in database
@@ -106,6 +110,7 @@ exports.loginUser = async (request, response) => {
       },
     });
   } catch (error) {
+    console.log(error)
     return response.status(500).send({ status: 'error', error });
   }
 };

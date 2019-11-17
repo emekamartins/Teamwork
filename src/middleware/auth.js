@@ -5,7 +5,11 @@ const pool = require('../db/database');
 // Authentication for loggedIn users
 const Auth = {
   async verifyToken(req, res, next) {
+
     try {
+      if(!req.headers.authorization){
+        throw Error
+      }
       const token = req.headers.authorization.split(' ')[1];
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
       const { teamId } = decodedToken;
@@ -15,18 +19,20 @@ const Auth = {
         throw Error;
       }
       if (rows[0].remember_token === null) {
-        return res.status(401).send({ error: 'Unauthorized' });
+        return res.status(401).send({ status: "error", error: 'Unauthorized' });
       }
       const dBToken = jwt.verify(rows[0].remember_token, process.env.JWT_SECRET);
       if (dBToken.teamId !== decodedToken.teamId) {
-        return res.status(401).send({ error: 'Invalid Request' });
+        return res.status(401).send({ status: "error", error: 'Invalid Request' });
       }
 
       req.token = token;
       req.user = { ID: decodedToken.teamId };
       next();
     } catch (error) {
+      
       res.status(401).json({
+        status: "error",
         error: 'Invalid Request, Not Authorized',
       });
     }

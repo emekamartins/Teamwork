@@ -12,12 +12,4 @@ router.post('/signin', userController.loginUser);
 router.post('/logout', Auth.verifyToken, userController.logoutUser);
 router.get('/me', Auth.verifyToken, userController.getUser);
 
-// Routes for user articles
-// router.post('/articles/new', Auth.verifyToken, articleController.createArticle);
-// router.get('/articles', Auth.verifyToken, articleController.viewArticles);
-// router.get('/articles/my-articles', Auth.verifyToken, articleController.viewCurrentUserArticles);
-// router.put('/articles/:articleid/edit', Auth.verifyToken, articleController.editArticle);
-// router.delete('/articles/:articleid/delete', Auth.verifyToken, articleController.deleteArticle);
-
-
 module.exports = router;
