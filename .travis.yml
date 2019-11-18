@@ -4,4 +4,10 @@ sudo: false
 install:
   - npm install
 script:
-  - npm test
+  - npm prod
+  env:
+  global:
+   - JWT_SECRET=thistokenformyapp
+   - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
+   - CLOUDINARY_API_KEY=342421579684833
+   - CLOUDINARY_CLOUD_NAME=dhclgjajx
