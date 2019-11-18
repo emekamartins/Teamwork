@@ -5,12 +5,3 @@ install:
   - npm install
 script:
   - npm prod
-  env:
-  global:
-   - DB_USER=postgres 
-   - DB_PORT=5432
-   - DB_DATABASE=teamwork_test
-   - JWT_SECRET=thistokenformyapp
-   - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
-   - CLOUDINARY_API_KEY=342421579684833
-   - CLOUDINARY_CLOUD_NAME=dhclgjajx
