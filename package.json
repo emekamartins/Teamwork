@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 20000",
-    "test2": "env-cmd ./config/test.env mocha --timeout 15000",
+    "test": "env-cmd ./config/test.env mocha --timeout 15000",
     "start": "node src/server.js",
     "dev": " env-cmd ./config/dev.env nodemon src/server.js"
   },
