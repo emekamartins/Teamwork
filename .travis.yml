@@ -4,4 +4,4 @@ sudo: false
 install:
   - npm install
 script:
-  - npm prod
+  - npm run prod
