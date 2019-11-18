@@ -14,7 +14,7 @@ env:
     - DB_DATABASE=teamwork_test
     - DB_USER=postgres
 before_script:
-  - psql -c ="CREATE DATABASE teamwork_test;" -U postgres  
+  - psql -c "CREATE DATABASE teamwork_test;" -U postgres  
 install:
   - npm install
 script:
