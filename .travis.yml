@@ -1,26 +1,27 @@
-# language: node_js
-# node_js: stable
-# services:
-#   - postgresql
-# addons:
-#   postgresql: "10"
-#   apt:
-#     packages:
-#       - postgresql-10
-#       - postgresql-client-10
-# env:
-#   global:
-#     - DB_PORT=5432
-#     - DB_DATABASE=teamwork_test
-#     - DB_USER=postgres
-#     - DB_HOST=127.0.0.1
-#     - JWT_SECRET=thistokenformyapp
-#     - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
-#     - CLOUDINARY_API_KEY=342421579684833
-#     - CLOUDINARY_CLOUD_NAME=dhclgjajx
-# before_script:
-#   - psql -c "CREATE DATABASE teamwork_test;" -U postgres  
-# install:
-#   - npm install
-# script:
-#   - npm test
+language: node_js
+node_js: stable
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
+env:
+  global:
+    - DB_PORT=5432
+    - DB_DATABASE=teamwork_test
+    - DB_USER=postgres
+    - DB_HOST=127.0.0.1
+    - JWT_SECRET=thistokenformyapp
+    - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
+    - CLOUDINARY_API_KEY=342421579684833
+    - CLOUDINARY_CLOUD_NAME=dhclgjajx
+before_script:
+  - psql -c "CREATE DATABASE teamwork_test;" -U postgres  
+  - psql -U postgres -f ./database.sql -d teamwork_test
+install:
+  - npm install
+script:
+  - npm test
