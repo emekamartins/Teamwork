@@ -19,8 +19,8 @@ env:
     - CLOUDINARY_API_KEY=342421579684833
     - CLOUDINARY_CLOUD_NAME=dhclgjajx
 before_script:
- - psql -c "CREATE DATABASE teamwork_test;" -U postgres  
-  - psql -U postgres -f database.sql -d teamwork_test
+ - createdb -T template0 teamwork_test  
+ - psql -U postgres -f database.sql -d teamwork_test
 install:
   - npm install
 script:
