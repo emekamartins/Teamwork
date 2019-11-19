@@ -20,7 +20,7 @@ env:
     - CLOUDINARY_CLOUD_NAME=dhclgjajx
 before_script:
   - createdb -T template0 teamwork_test 
-  - psql teamwork_test < -f database.sql
+  - psql teamwork_test <  ./database.sql
 install:
   - npm install
 script:
