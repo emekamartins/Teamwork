@@ -25,6 +25,6 @@ cache:
     - "$HOME/.npm"
 before_script:
   - psql -c 'CREATE DATABASE teamwork_test;' -U postgres
-  - psql -f database.sql -d teamwork_test -U postgres 
+  - psql ./database.sql -d teamwork_test -U postgres 
 script:
   - npm test
