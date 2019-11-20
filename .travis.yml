@@ -22,7 +22,7 @@ install:
   - npm install
 cache:
   directories:
-    - "$HOME/.npm"
+    - "Teamwork"
 before_script:
   - psql -c 'CREATE DATABASE teamwork_test;' -U postgres
   - psql -f ./db/database.sql -d teamwork_test -U postgres 
