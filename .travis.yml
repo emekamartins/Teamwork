@@ -10,15 +10,21 @@ addons:
       - postgresql-client-10
 env:
   global:
+    - NODE_ENV = "test"
     - DB_PORT=5432
     - DB_DATABASE=teamwork_test
     - DB_USER=postgres
-    - DB_HOST=127.0.0.1
     - JWT_SECRET=thistokenformyapp
     - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
     - CLOUDINARY_API_KEY=342421579684833
     - CLOUDINARY_CLOUD_NAME=dhclgjajx
 install:
   - npm install
+cache:
+  directories:
+    - "$HOME/.npm"
+before_script:
+  - psql -c 'CREATE DATABASE teamwork_test;' -U postgres
+  - psql -f ./db/database.sql -d teamwork_test -U postgres 
 script:
   - npm test
