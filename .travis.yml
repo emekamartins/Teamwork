@@ -9,12 +9,12 @@ addons:
       - postgresql-10
       - postgresql-client-10
 env:
-  globals:
+  global:
     - ELEPHANTDB_USER=$ELEPHANTDB_USER
     - ELEPHANTDB_PASS=$ELEPHANTDB_PASS
     - ELEPHANTDB_HOST=$ELEPHANTDB_HOST
     - ELEPHANTDB_PORT=$ELEPHANTDB_PORT
-    - ELEPHANTDB_DATABASE=$ELEPHANTDB_DATABASE
+    - ELEPHANTDB_DATABASE=ozmkltfh
 install:
   - npm install
 script:
