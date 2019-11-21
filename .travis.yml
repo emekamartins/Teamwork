@@ -1,3 +1,16 @@
 language: node_js
-node_js: "stable"
-cache: directories: "node_modules"
+node_js: stable
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
+deploy:
+  skip_cleanup: true
+install:
+  - npm install
+script:
+  - npm test
