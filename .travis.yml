@@ -9,17 +9,7 @@ addons:
       - postgresql-10
       - postgresql-client-10
 env:
-  global:
     - NODE_ENV='test'
-    - JWT_SECRET=thistokenformyapp
-    - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
-    - CLOUDINARY_API_KEY=342421579684833
-    - CLOUDINARY_CLOUD_NAME=dhclgjajx
-    - ELEPHANTDB_USER=ozmkltfh
-    - ELEPHANTDB_PASS=SJM6Z2QFnvBB1PJFlRlor9y8A2QfHaXm
-    - ELEPHANTDB_HOST=isilo.db.elephantsql.com
-    - ELEPHANTDB_POST=5432
-    - ELEPHANTDB_DATABASE=ozmkltfh
 install:
   - npm install
 cache:
