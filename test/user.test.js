@@ -311,7 +311,7 @@ describe("Articles", function(){
 
 describe("GIFs", function(){
 
-    it('should create gif',async () => {
+    before(async () => {
         const gifRes = await request(app)
         .post('/api/v1/gifs')
         .set('authorization', `Bearer ${token}`)
@@ -320,7 +320,13 @@ describe("GIFs", function(){
         .expect(201)
         userGif = gifRes.body
     })
-    
+    it('should create gif post and upload gif to cloudinary', async () => {
+        expect(userGif.status).to.equal("success")
+        expect(userGif.data.message).to.equal("gif post successfully posted")
+        expect(userGif.data).to.have.property("imageUrl")
+        expect(userGif.data).to.have.property("gifId")
+        
+    })
 
     it("should comment on gif post", async () => {
         const content = "testing my gif post comments"
