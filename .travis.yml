@@ -8,8 +8,6 @@ addons:
     packages:
       - postgresql-10
       - postgresql-client-10
-env:
-    - NODE_ENV='test'
 install:
   - npm install
 cache:
