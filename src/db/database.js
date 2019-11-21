@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 const isProduction = process.env.NODE_ENV === 'production';
 
 
-const connectionString = `postgres://${process.env.ELEPHANTDB_USER}:${process.env.ELEPHANTDB_PASS}@${process.env.ELEPHANTDB_HOST}:${process.env.ELEPHANTDB_PORT}/${process.env.ELEPHANTDB_DATABASE}`
+const connectionString = `postgresql://${process.env.ELEPHANTDB_USER}:${process.env.ELEPHANTDB_PASS}@${process.env.ELEPHANTDB_HOST}:${process.env.ELEPHANTDB_PORT}/${process.env.ELEPHANTDB_DATABASE}`
 
 
 const pool = new Pool({

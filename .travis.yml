@@ -21,7 +21,5 @@ env:
     - ELEPHANTDB_DATABASE=$ELEPHANTDB_DATABASE
 install:
   - npm install
-before_script:
-  - psql -c 'CREATE DATABASE teamwork_test IF NOT EXIST;' -U postgres 
 script:
   - npm test
