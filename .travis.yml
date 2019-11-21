@@ -12,8 +12,5 @@ env:
   - ELEPHANTDB_DATABASE="ozmkltfh"
 install:
   - npm install
-cache:
-  directories:
-    - "$HOME/.npm"
 script:
   - npm test
