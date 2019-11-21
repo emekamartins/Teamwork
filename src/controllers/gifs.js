@@ -53,7 +53,7 @@ exports.uploadGif = async (request, response) => {
           });
         }
 
-        fs.unlinkSync(path);
+        
         console.log('uploaded');
         return result;
       });
