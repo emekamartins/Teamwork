@@ -12,10 +12,6 @@ const pool = new Pool({
   ssl: isProduction,
 });
 
-pool.connect()
-.then(() => console.log("connected Successfully"))
-.catch((err) => console.log(err))
-
 
 
 module.exports = pool;

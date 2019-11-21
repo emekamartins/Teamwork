@@ -310,6 +310,16 @@ describe("Articles", function(){
 })
 
 describe("GIFs", function(){
+
+    before(async () => {
+        const gifRes = await request(app)
+        .post('/api/v1/gifs')
+        .set('authorization', `Bearer ${token}`)
+        .field('title', 'My first gif post')
+        .attach('image', 'test/fixtures/profile-pic.jpg')
+        .expect(201)
+        userGif = gifRes.body
+    })
     it('should create gif post and upload gif to cloudinary', async () => {
         expect(userGif.status).to.equal("success")
         expect(userGif.data.message).to.equal("gif post successfully posted")
