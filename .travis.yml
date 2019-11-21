@@ -1,22 +1,22 @@
 language: node_js
 node_js: stable
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "10"
+  postgresql: '10'
   apt:
     packages:
-      - postgresql-10
-      - postgresql-client-10
+    - postgresql-10
+    - postgresql-client-10
 deploy:
   provider: heroku
   api_key:
-    secure: "i7amCAok+6U/nhe760a6QVLW5U/RGIkzlV+UHwj54Cwru/FAy+w0r2N08fZ4bnSmhftpaKcjXWS2yPveumvZnnbCyusP8RhmyRAi0fn8zSuTbT7tsWw8884pydP9Y/kAW6er2yAMZ30akA7s8eOAcyvNd/P6pW7or3xn3dkGQTyHBhtHeBZHTjbf88TbdY9qmrcet6+tvFf6Kj/Q5e0ZChorZzSGaz63dZd4R0ZCgPyBXuSNXsMxQSGxajzb0arX8ODCUD7VkLCarq8S3l3Ml+a7ABksPu4+Ai0wbd1JcYUORBmDyVqQJrJI5CF+VbgMTFUVs3TfKYi+2BNMlx7/ixAAPk2TBeqyiZeQq9FTV8yk2HHz4UyyZP6dKgNfbDO6MUm67i5qa6lwif0KQSQp4j/oyFY6/DWN5rzpTx/gWhCcbMxONhqSyoKSmDovOqgZsskTfvl6339PA2aLTtGRrNxlSSWbGoFprtV6Kptmhv5Uof5AOeEvAg40JdV8JBWqYCNVw8co6Aupwjid+FVpqluwVCCmUTsOEKWZYxX13ZWaOva53bxsV+7bd18zjsy6IGxzHLSyTEf5fPVRf9hD/ya8VlhFAwauQs+N5wdAagiQ5paS8cc8jJJWhOigbixPBlGhXsXWPeWz+lUqbCiQMC6a4xs8e5Z7R8RtBjdlpn0="
+    secure: NnrWK5yht+E22eWRnUcix+T8ZshaJlTjxogb2U3zMl8TaCoZo1+Y0s0n/53UyHKAMXMs6yhHpUUj4sDa+BsZiFL9Wny23vgDVqKyTc5750ra9v9p7DrJfavj/89CkG/X7WnS73V3KyuPoUh3ScHkQCyuuRwv8MbOzjaRlVq1KtjhVxrRWLbRJybfZJqpj2BCTL87ZQ0o6JmzaGwKfxARpX5s2j7ZILwBsO4utZC6F269zeb0c0m7woLNQnt/9zqLGx27uBof+eVKHAI2GIDcU/3mPsheUxtIBA/IoUPOPTtyv40QAJNuhUFbzWbBPnXC3xwyKfTFk/K2n1PYI78Y1/74iXryduKW+HPLA3A+rTR61O0RqVVxbOmKmQ20mUR9ZeaVguCKSOfWNCZ5LKT6dM+f6uKUXlgSdI+2yj22YGQGrG5zo+rlGwqJWJ5HM7hjVCdcHJuUYpjDYTxlzH/zmK04V0T9DzW44oVo8/sz17GZ8zuF8WBytDwJz3eUi+k/GvHuoC78+LKxpYKXGuVyGt4s6U/NsnUo1LNU/Jan+ryRB4nFOLYbhBXF7J9k2EglBj9HxOzESBDvB2orhwNWtcahmHq9dGbb0G3K7x1V8vtMz+MjioJepnFhUmRa4qnpWrFtNO+R9UqsNfAWEouQpHIVK2menJEtp6hhH33lIZ0=
   skip_cleanup: true
 install:
-  - npm install
+- npm install
 script:
-  - npm test
-
-  
-
+- npm test
+env:
+  global:
+    secure: mW/B+Z6YaMiNw8ri8DUE4SUOuqwWPntGK3c99FlrnGaCqpNQiTjv00p83+ER2BvuC2/X86f61VsBnxxptLBeiyGTmufWVEKlqbNg/TZokYuECu5BL0hlPybbTjRyYev2qnU0quIGLtiymQpA6oX3TAF5lqZ03VNUYCAJoC3A2H1WU/JgmmEcRR/mratZ0ZIFvbmoezVD/tRQir4/NK9+iS7gAU4LRLZen9HyubE2IpSNDV1g4XHpX2mTEbP5hRuiIywUd303SLKFRGkAyGu3RgZ5Wk8llC+W2VAhmjaWdT9uKMTYwz+v7yJlQsDQSvCbjt01ljouGBWm7vOyR3n8CCwH1BPajBCRvnwAMRQ6H/HhZA6IRakcKL6SpdQ1CH08GCZITwi12/iLi6bxZgAcsmZ1AfONLevauhyoS/rIw1EeiTvXwwtcPuO2fAUm97KdMkhY/FjDvPYMhgh/W7+2KkPm9JAWh6KBUwFdKDil5Z5CwOdDMnHzODi/C79+M80XJOaCVc8vxoXTlw1u+YYyx3HfuIDoy0ZzGIoQ80u4R8slez3gJnSaGM0Yi3eOBSwcy2JVi4Qf3EMktT0qPZOaP+lr+0/hzTvTzKduGWSYrGxz4dWm2vc5U9sdkO9AubBgx74pnf6OsRmydpYV6tCf94fVE7UplX/XD+UTRn/dSrY=
