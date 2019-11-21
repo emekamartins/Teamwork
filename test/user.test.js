@@ -79,7 +79,8 @@ before(async () => {
         "address": "3rd avenue festac lagos"
     })
     .expect(201) 
-
+     
+    console.log('testing...3')
     const title = "my first article"
     const content = "this is a test for article posting"
     const articleRes = await request(app)
@@ -91,7 +92,7 @@ before(async () => {
     })
     .expect(201)
     idArticle = articleRes.body.data.articleId
-
+    console.log('testing...4')
     const gifRes = await request(app)
     .post('/api/v1/gifs')
     .set('authorization', `Bearer ${token}`)
@@ -99,7 +100,7 @@ before(async () => {
     .attach('image', 'test/fixtures/profile-pic.jpg')
     .expect(201)
     userGif = gifRes.body
-
+    console.log('testing....5')
 })
  
 
