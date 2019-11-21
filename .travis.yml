@@ -9,8 +9,7 @@ addons:
       - postgresql-10
       - postgresql-client-10
 env:
-    globals:
-      - ELEPHANTDB_DATABASE=ozmkltfh
+  - ELEPHANTDB_DATABASE="ozmkltfh"
 install:
   - npm install
 cache:
