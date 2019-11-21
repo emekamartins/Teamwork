@@ -4,13 +4,18 @@ const { Pool } = require('pg');
 const isProduction = process.env.NODE_ENV === 'production';
 
 
-const connectionString = 'postgres://yzozlqfxfehyww:5b17c81a9689c1dfbd0e10e25263cdeb278e38d76b8458cffb17551cdcf149e0@ec2-23-23-245-89.compute-1.amazonaws.com:5432/d8h48eej0cd637';
+const connectionString = 'postgres://ozmkltfh:SJM6Z2QFnvBB1PJFlRlor9y8A2QfHaXm@isilo.db.elephantsql.com:5432/ozmkltfh';
 
 
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
   ssl: isProduction,
 });
+
+pool.connect()
+.then(() => console.log("connected Successfully"))
+.catch((err) => console.log(err))
+
 
 
 module.exports = pool;
