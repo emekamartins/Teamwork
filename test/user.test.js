@@ -316,7 +316,7 @@ describe("GIFs", function(){
         .post('/api/v1/gifs')
         .set('authorization', `Bearer ${token}`)
         .field('title', 'My first gif post')
-        .attach('image', './test/fixtures/profile-pic.jpg')
+        .attach('image', './test/fixtures/my_pass_photo.jpg')
         .expect(201)
         userGif = gifRes.body
     })
