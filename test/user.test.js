@@ -93,14 +93,7 @@ before(async () => {
     .expect(201)
     idArticle = articleRes.body.data.articleId
     console.log('testing...4')
-    const gifRes = await request(app)
-    .post('/api/v1/gifs')
-    .set('authorization', `Bearer ${token}`)
-    .field('title', 'My first gif post')
-    .attach('image', 'test/fixtures/profile-pic.jpg')
-    .expect(201)
-    userGif = gifRes.body
-    console.log('testing....5')
+    
 })
  
 
