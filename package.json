@@ -8,7 +8,10 @@
     "start": "node src/server.js",
     "dev": " env-cmd ./config/dev.env nodemon src/server.js"
   },
+<<<<<<< HEAD
  
+=======
+>>>>>>> newFeature2
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emekamartins/Teamwork.git"
