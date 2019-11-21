@@ -10,6 +10,8 @@ addons:
       - postgresql-client-10
 deploy:
   provider: heroku
+  api_key:
+    secure: "i7amCAok+6U/nhe760a6QVLW5U/RGIkzlV+UHwj54Cwru/FAy+w0r2N08fZ4bnSmhftpaKcjXWS2yPveumvZnnbCyusP8RhmyRAi0fn8zSuTbT7tsWw8884pydP9Y/kAW6er2yAMZ30akA7s8eOAcyvNd/P6pW7or3xn3dkGQTyHBhtHeBZHTjbf88TbdY9qmrcet6+tvFf6Kj/Q5e0ZChorZzSGaz63dZd4R0ZCgPyBXuSNXsMxQSGxajzb0arX8ODCUD7VkLCarq8S3l3Ml+a7ABksPu4+Ai0wbd1JcYUORBmDyVqQJrJI5CF+VbgMTFUVs3TfKYi+2BNMlx7/ixAAPk2TBeqyiZeQq9FTV8yk2HHz4UyyZP6dKgNfbDO6MUm67i5qa6lwif0KQSQp4j/oyFY6/DWN5rzpTx/gWhCcbMxONhqSyoKSmDovOqgZsskTfvl6339PA2aLTtGRrNxlSSWbGoFprtV6Kptmhv5Uof5AOeEvAg40JdV8JBWqYCNVw8co6Aupwjid+FVpqluwVCCmUTsOEKWZYxX13ZWaOva53bxsV+7bd18zjsy6IGxzHLSyTEf5fPVRf9hD/ya8VlhFAwauQs+N5wdAagiQ5paS8cc8jJJWhOigbixPBlGhXsXWPeWz+lUqbCiQMC6a4xs8e5Z7R8RtBjdlpn0="
   skip_cleanup: true
 install:
   - npm install
