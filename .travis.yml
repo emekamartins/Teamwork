@@ -10,7 +10,6 @@ addons:
       - postgresql-client-10
 env:
     - NODE_ENV='test'
-    - ELEPHANTDB_DATABASE=ozmkltfh
 install:
   - npm install
 cache:
