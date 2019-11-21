@@ -10,6 +10,8 @@ const gifModel = require('../models/gifModel');
 
 /** ****************************  FUNCTION TO CREATE GIF ******************** */
 exports.uploadGif = async (request, response) => {
+  console.log("testing cloudinary")
+  console.log(process.env.CLOUDINARY_CLOUD_NAME, process.env.CLOUDINARY_API_KEY, process.env.CLOUDINARY_API_SECRET )
   cloudinary.config({
 
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
