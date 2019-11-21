@@ -53,6 +53,7 @@ let idArticle
 let userGif
 before(async () => {
     
+    console.log('testing...1')
     const res = await request(app)
     .post('/api/v1/auth/signin')
     .send({
@@ -62,6 +63,7 @@ before(async () => {
     .expect(200)
     token = res.body.data.token
 
+    console.log('testing...2')
     await request(app)
     .post('/api/v1/auth/create-user')
     .set('authorization', `Bearer ${token}`)
