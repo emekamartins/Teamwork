@@ -10,21 +10,20 @@ addons:
       - postgresql-client-10
 env:
   global:
-    - NODE_ENV = "test"
-    - DB_PORT=5432
-    - DB_DATABASE=teamwork_test
-    - DB_USER=postgres
+    - NODE_ENV='test'
     - JWT_SECRET=thistokenformyapp
     - CLOUDINARY_API_SECRET=GNdbF3gFI20HhfrcqjZhWrWxxZI
     - CLOUDINARY_API_KEY=342421579684833
     - CLOUDINARY_CLOUD_NAME=dhclgjajx
+    - ELEPPHANTDB_USER=ozmkltfh
+    - ELEPHANTDB_PASS=SJM6Z2QFnvBB1PJFlRlor9y8A2QfHaXm
+    - ELEPHANTDB_HOST=isilo.db.elephantsql.com
+    - ELEPHANTDB_POST=5432
+    - ELEPHANTDB_DATABASE=ozmkltfh
 install:
   - npm install
 cache:
   directories:
     - "$HOME/.npm"
-before_script:
-  - psql -c 'CREATE DATABASE teamwork_test WITH ENCODING UTF8 LC_COLLATE=en_GB.UTF8 LC_CTYPE=en_GB.UTF8;' -U postgres
-  - psql -U postgres -d teamwork_test -f /home/travis/build/emekamartins/Teamwork/test/database.sql 
 script:
   - npm test
