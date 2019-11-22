@@ -1,0 +1,25 @@
+language: node_js
+node_js: stable
+services:
+- postgresql
+addons:
+  postgresql: '10'
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+deploy:
+  provider: heroku
+  api_key:
+    secure: piQ6kHFwGxatOeomtay7quQtx///IbqfnsHnUaasdItRLNM9Gw9jEO1Um27OiBon+qB6fTQNvrePXxcC4rtZs/W60UHfvp1716aVX5wNHUygKgXC+ecNzmtI9j7oQMI99rFaGvmOKbd0guddmzFfybkkqd7K/p+hqWEwJ41Cl4ie68VVdaQKtlb5yQiPk9tOd0xrivVS8/VDcGbCndt8q/qDVI2bETc6VYxcD3BIISf/ZCEYMPT65nFgTVzuQ2AO/h2pwxh07gB9XQVZvl8uT54xYkHbJNo2P/H9pc1kJqMPdNi/hhzq84YQqOXtS5v02LDNnZdFivBrVecYCRcEjmA+WSAV9UEjLq3JYKdARnMoBE4b/mfuAIPKElz1R0KEzo5H9IYeF6NL6AQW4F+ZVMpeaLh+hsmJRZjBFNAFVIjRlKa+jCL4R7FPhDT5OEOgnVIZfV1c5n7hG3lA3XGWMM8xT1AEa7GzoKfJwFR4StinUZpc1j+vVloyUArX72muhuFRAK6vwD8l5ANvPmfS77/mND1zstwUbLDb8WoIih1uvh0ifHlXSZTnzWiw7MAmz8cLRmgsB+8LRnbShmbrh9pFz8A21f3e+9S2iuAuepMXE8J8+JLdOKHLUroJLRAtJGK4tfkLz/B7HjFRVNApcQ+YasN3frillsyiGlP8aQY=
+  app: emeka-teamwork-staging
+  on:
+    repo: emekamartins/Teamwork
+  skip_cleanup: true
+install:
+- npm install
+script:
+- npm test
+env:
+  global:
+    secure: mW/B+Z6YaMiNw8ri8DUE4SUOuqwWPntGK3c99FlrnGaCqpNQiTjv00p83+ER2BvuC2/X86f61VsBnxxptLBeiyGTmufWVEKlqbNg/TZokYuECu5BL0hlPybbTjRyYev2qnU0quIGLtiymQpA6oX3TAF5lqZ03VNUYCAJoC3A2H1WU/JgmmEcRR/mratZ0ZIFvbmoezVD/tRQir4/NK9+iS7gAU4LRLZen9HyubE2IpSNDV1g4XHpX2mTEbP5hRuiIywUd303SLKFRGkAyGu3RgZ5Wk8llC+W2VAhmjaWdT9uKMTYwz+v7yJlQsDQSvCbjt01ljouGBWm7vOyR3n8CCwH1BPajBCRvnwAMRQ6H/HhZA6IRakcKL6SpdQ1CH08GCZITwi12/iLi6bxZgAcsmZ1AfONLevauhyoS/rIw1EeiTvXwwtcPuO2fAUm97KdMkhY/FjDvPYMhgh/W7+2KkPm9JAWh6KBUwFdKDil5Z5CwOdDMnHzODi/C79+M80XJOaCVc8vxoXTlw1u+YYyx3HfuIDoy0ZzGIoQ80u4R8slez3gJnSaGM0Yi3eOBSwcy2JVi4Qf3EMktT0qPZOaP+lr+0/hzTvTzKduGWSYrGxz4dWm2vc5U9sdkO9AubBgx74pnf6OsRmydpYV6tCf94fVE7UplX/XD+UTRn/dSrY=
