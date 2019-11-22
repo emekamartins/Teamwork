@@ -183,23 +183,23 @@ describe('Users test', function() {
         .expect(401)
     })
 
-    it("should not create user if admin user is not authenticated", async () => {
+    // it("should not create user if admin user is not authenticated", async () => {
 
-        await request(app)
-        .post('/api/v1/auth/create-user')
-        .send({
-            "roleId": "2",
-            "firstName": "martins",
-            "lastName": "eke",
-            "email": "martinseke@gmail.com",
-            "password": "westcrew10",
-            "gender": "male",
-            "jobRole": "cutsomer Service",
-            "department": "Administrative",
-            "address": "3rd avenue festac lagos"
-        })
-        .expect(401)
-    })
+    //     await request(app)
+    //     .post('/api/v1/auth/create-user')
+    //     .send({
+    //         "roleId": "2",
+    //         "firstName": "martins",
+    //         "lastName": "eke",
+    //         "email": "martinseke@gmail.com",
+    //         "password": "westcrew10",
+    //         "gender": "male",
+    //         "jobRole": "cutsomer Service",
+    //         "department": "Administrative",
+    //         "address": "3rd avenue festac lagos"
+    //     })
+    //     .expect(401)
+    // })
 
 })
 
