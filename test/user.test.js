@@ -134,33 +134,33 @@ describe('Users test', function() {
    
 
 
-    it("it should not create a user if not admin",  async () => {   
+    // it("it should not create a user if not admin",  async () => {   
 
-        const userRes = await request(app)
-        .post('/api/v1/auth/signin')
-        .send({
-            email: "mariaokwor@gmail.com",
-            password:"westcrew10"
-        })
-        expect(200)
-        const userToken = userRes.body.data.token
+    //     const userRes = await request(app)
+    //     .post('/api/v1/auth/signin')
+    //     .send({
+    //         email: "mariaokwor@gmail.com",
+    //         password:"westcrew10"
+    //     })
+    //     expect(200)
+    //     const userToken = userRes.body.data.token
 
-        await request(app)
-        .post('/api/v1/auth/create-user')
-        .set('authorization', `Bearer ${userToken}`)
-        .send({
-            "roleId": "2",
-            "firstName": "martins",
-            "lastName": "nnaji",
-            "email": "martinsnnaji@gmail.com",
-            "password": "westcrew10",
-            "gender": "male",
-            "jobRole": "cutsomer Service",
-            "department": "Administrative",
-            "address": "3rd avenue festac lagos"
-        })
-        .expect(401)
-    })
+    //     await request(app)
+    //     .post('/api/v1/auth/create-user')
+    //     .set('authorization', `Bearer ${userToken}`)
+    //     .send({
+    //         "roleId": "2",
+    //         "firstName": "martins",
+    //         "lastName": "nnaji",
+    //         "email": "martinsnnaji@gmail.com",
+    //         "password": "westcrew10",
+    //         "gender": "male",
+    //         "jobRole": "cutsomer Service",
+    //         "department": "Administrative",
+    //         "address": "3rd avenue festac lagos"
+    //     })
+    //     .expect(401)
+    // })
 
     it("should login user", async () => {
         const loginRes = await request(app)
