@@ -5,7 +5,7 @@ const articleModel = require('../models/articleModel');
 
 /*
 -----------------------------------------------------------------------
-controllers for specified article routes
+controllers for specified article routes for main project
 -----------------------------------------------------------------------
 */
 
