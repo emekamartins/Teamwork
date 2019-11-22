@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const connectionString = `postgres://${process.env.ELEPHANTDB_USER}:${process.env.ELEPHANTDB_PASS}@${process.env.ELEPHANTDB_HOST}:5432/${process.env.ELEPHANTDB_DATABASE}`;
 
-
+console.log(isProduction)
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
   ssl: isProduction,
