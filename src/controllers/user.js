@@ -66,12 +66,12 @@ exports.addUser = async (request, response) => {
         userId: rows[0].team_id,
       },
     });
-  } catch (e) {
+  } catch (err) {
     if (e.routine === '_bt_check_unique') {
       return response.status(500).send({ status: 'error', error: 'email already exist' });
     }
 
-    return response.status(500).send({ status: 'error', error: e });
+    return response.status(500).send({ status: 'error', error: err });
   }
 };
 
